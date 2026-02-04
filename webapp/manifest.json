@@ -1,0 +1,179 @@
+{
+  "_version": "1.77.0",
+  "sap.app": {
+    "id": "pomodule",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.1",
+      "toolsId": "eaa5d738-2099-42c6-82df-25bd07f208de"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zraj_srv_po_bind/srvd/sap/zraj_srv_po_def/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.139.4",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "pomodule.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZRAJ_C_PO_HDRList",
+          "target": "ZRAJ_C_PO_HDRList"
+        },
+        {
+          "pattern": "ZRAJ_C_PO_HDR({key}):?query:",
+          "name": "ZRAJ_C_PO_HDRObjectPage",
+          "target": "ZRAJ_C_PO_HDRObjectPage"
+        },
+        {
+          "pattern": "ZRAJ_C_PO_HDR({key})/_Poitem({key2}):?query:",
+          "name": "ZRAJ_C_PO_ITMObjectPage",
+          "target": "ZRAJ_C_PO_ITMObjectPage"
+        }
+      ],
+      "targets": {
+        "ZRAJ_C_PO_HDRList": {
+          "type": "Component",
+          "id": "ZRAJ_C_PO_HDRList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZRAJ_C_PO_HDR",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZRAJ_C_PO_HDR": {
+                  "detail": {
+                    "route": "ZRAJ_C_PO_HDRObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZRAJ_C_PO_HDRObjectPage": {
+          "type": "Component",
+          "id": "ZRAJ_C_PO_HDRObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZRAJ_C_PO_HDR",
+              "navigation": {
+                "_Poitem": {
+                  "detail": {
+                    "route": "ZRAJ_C_PO_ITMObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZRAJ_C_PO_ITMObjectPage": {
+          "type": "Component",
+          "id": "ZRAJ_C_PO_ITMObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZRAJ_C_PO_HDR/_Poitem"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

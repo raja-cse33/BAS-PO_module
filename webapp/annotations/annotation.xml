@@ -15,7 +15,6 @@
                         <PropertyPath>BeginDate</PropertyPath>
                         <PropertyPath>Enddate</PropertyPath>
                         <PropertyPath>FinalStatus</PropertyPath>
-                        <PropertyPath>TotalAmount</PropertyPath>
                     </Collection>
                 </Annotation>
                 <Annotation Term="UI.LineItem">

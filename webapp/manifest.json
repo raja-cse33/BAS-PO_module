@@ -118,6 +118,23 @@
             "settings": {
               "contextPath": "/ZRAJ_C_PO_HDR",
               "variantManagement": "Page",
+         "views": {
+                "paths": [
+	            {
+	                "key": "tab1",
+                  "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#SPV_All"
+	            },
+	            {
+	                "key": "tab2",
+	                "annotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#SPV_ACC"
+	            },
+	            { 
+	                "key": "tab3",
+	                "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Open"
+	            }
+	        ],
+	        "showCounts" : true
+	    },
               "navigation": {
                 "ZRAJ_C_PO_HDR": {
                   "detail": {
@@ -128,7 +145,22 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "ResponsiveTable",
+                    "quickVariantSelection1": {
+                     "paths": [
+                        {
+                           "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#All"
+                        },
+                        {
+                           "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Accepted"
+                        },
+                        {
+                           "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Open"
+                        }
+                     ],
+                     "hideTableTitle": true,
+                     "showCounts": true
+                  }
                   }
                 }
               }
